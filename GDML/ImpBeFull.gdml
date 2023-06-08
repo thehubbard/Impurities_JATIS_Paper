@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Translated from Fastrad 3.9.5.23084 the 2020/11/11 at 14h25 -->
+<gdml xmlns:gdml="http://cern.ch/2001/Schemas/GDML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+	<define>
+		<constant name="HALFPI" value="pi/2.0"/>
+		<constant name="PI" value="1.0*pi"/>
+		<constant name="TWOPI" value="2.0*pi"/>
+		<position name="center"/>
+		<rotation name="identity"/>
+	</define>
+
+	<materials>
+		<element name="videRef" formula="VACUUM" Z="1">
+			<atom value="1"/>
+		</element>
+		<element name="aluminum" formula="Al" Z="13">
+			<atom value="26.981539"/>
+		</element>
+		<element name="silicon" formula="Si" Z="14">
+			<atom value="28.0855"/>
+		</element>
+		<element name="beryllium" formula="Be" Z="4">
+			<atom value="9.012182"/>
+		</element>
+		<element name="molybdenum" formula="Mo" Z="42">
+			<atom value="95.96"/>
+		</element>
+		<element name="carbon" formula="C" Z="6">
+			<atom value="12.0107"/>
+		</element>
+		<element name="hydrogen" formula="H" Z="1">
+			<atom value="1.00794"/>
+		</element>
+		<element name="calcium" formula="Ca" Z="20">
+			<atom value="40.078"/>
+		</element>
+		<element name="nickel" formula="Ni" Z="28">
+			<atom value="58.6934"/>
+		</element>
+		<element name="iron" formula="Fe" Z="26">
+			<atom value="55.845"/>
+		</element>
+		<element name="chromium" formula="Cr" Z="24">
+			<atom value="51.9961"/>
+		</element>
+		<element name="copper" formula="Cu" Z="29">
+			<atom value="63.546"/>
+		</element>		
+		<element name="magnesium" formula="Mg" Z="12">
+			<atom value="24.305"/>
+		</element>
+		<element name="zinc" formula="Zn" Z="30">
+			<atom value="65.38"/>
+		</element>
+		<material name="VACUUM" formula="VACUUM">
+			<D value ="1E-25" unit="g/cm3"/>
+			<fraction n="1.0" ref="videRef"/>
+		</material>
+		<material name="ALUMINUM" formula="ALUMINUM">
+			<D value ="2.7" unit="g/cm3"/>
+			<fraction n="1." ref="aluminum"/>
+		</material>
+		<material name="SILICON" formula="SILICON">
+			<D value ="2.33" unit="g/cm3"/>
+			<fraction n="1." ref="silicon"/>
+		</material>
+		<material name="BERYLLIUM" formula="BERYLLIUM">
+			<D value ="1.85" unit="g/cm3"/>
+			<fraction n="0.0002" ref="calcium"/>
+			<fraction n="0.0004" ref="nickel"/>
+			<fraction n="0.0016" ref="iron"/>
+			<fraction n="0.9928" ref="beryllium"/>
+			<fraction n="0.0006" ref="aluminum"/>
+			<fraction n="0.0002" ref="chromium"/>
+			<fraction n="0.0002" ref="copper"/>
+			<fraction n="0.0010" ref="magnesium"/>
+			<fraction n="0.0006" ref="silicon"/>
+			<fraction n="0.0016" ref="carbon"/>
+			<fraction n="0.0008" ref="zinc"/>
+		</material>
+		<material name="MOLYBDENUM" formula="MOLYBDENUM">
+			<D value ="10.22" unit="g/cm3"/>
+			<fraction n="1." ref="molybdenum"/>
+		</material>
+		<material name="BCB" formula="BCB">
+			<D value ="0.957" unit="g/cm3"/>
+			<fraction n="0.077423" ref="hydrogen"/>
+			<fraction n="0.922577" ref="carbon"/>
+		</material>
+	</materials>
+
+	<solids>
+		<sphere name="__World__SphereRef" rmin="0." rmax="155" startphi="0." deltaphi="TWOPI" starttheta="0." deltatheta="PI"/>
+		<sphere name="Be_Sphere0x__2624049524448" rmin="116." rmax="117." startphi="0." deltaphi="TWOPI" starttheta="0." deltatheta="PI"/>
+		<sphere name="Mo_Sphere0x__2624047887040" rmin="117." rmax="120." startphi="0." deltaphi="TWOPI" starttheta="0." deltatheta="PI"/>
+		<sphere name="Al_Sphere0x__2624049522864" rmin="120." rmax="150." startphi="0." deltaphi="TWOPI" starttheta="0." deltatheta="PI"/>
+		<box name="Sensor0x__2624049032160" x="100." y="100." z="0.5"/>
+		<box name="OBF0x__2624048174864" x="100." y="100." z="0.00009"/>
+		<box name="Bcb0x__2624048174871" x="100." y="100." z="0.005"/>
+	</solids>
+
+	<structure>
+		<volume name="Be_Sphere0x__2624048685680__vol">
+			<materialref ref="BERYLLIUM"/>
+			<solidref ref="Be_Sphere0x__2624049524448"/>
+		</volume>
+		<volume name="Mo_Sphere0x__2624048682688__vol">
+			<materialref ref="MOLYBDENUM"/>
+			<solidref ref="Mo_Sphere0x__2624047887040"/>
+		</volume>
+		<volume name="Al_Sphere0x__2624048680224__vol">
+			<materialref ref="ALUMINUM"/>
+			<solidref ref="Al_Sphere0x__2624049522864"/>
+		</volume>
+		<volume name="Sensor0x__2624048685328__vol">
+			<materialref ref="SILICON"/>
+			<solidref ref="Sensor0x__2624049032160"/>
+		</volume>
+		<volume name="OBF0x__2624048685504__vol">
+			<materialref ref="ALUMINUM"/>
+			<solidref ref="OBF0x__2624048174864"/>
+		</volume>
+		<volume name="Bcb0x__2624048174870__vol">
+			<materialref ref="BCB"/>
+			<solidref ref="Bcb0x__2624048174871"/>
+		</volume>
+		<volume name="Structure">
+			<materialref ref="VACUUM"/>
+			<solidref ref="__World__SphereRef"/>
+			<physvol name="Be_Sphere0x__2624048685680">
+				<volumeref ref="Be_Sphere0x__2624048685680__vol"/>
+			</physvol>
+			<physvol name="Mo_Sphere0x__2624048682688">
+				<volumeref ref="Mo_Sphere0x__2624048682688__vol"/>
+			</physvol>
+			<physvol name="Al_Sphere0x__2624048680224">
+				<volumeref ref="Al_Sphere0x__2624048680224__vol"/>
+			</physvol>
+			<physvol name="Sensor0x__2624048685328">
+				<volumeref ref="Sensor0x__2624048685328__vol"/>
+			</physvol>
+			<physvol name="OBF0x__2624048685504">
+				<volumeref ref="OBF0x__2624048685504__vol"/>
+				<position name="posRef_OBF0x__2624048685504" z="0.250045"/>
+			</physvol>
+			<physvol name="Bcb0x__2624048174870">
+				<volumeref ref="Bcb0x__2624048174870__vol"/>
+				<position name="posRef_Bcb0x__2624048174870" z="-0.2525"/>
+			</physvol>
+		</volume>
+	</structure>
+
+	<setup name="Setup" version="1.0">
+		<world ref="Structure"/>
+	</setup>
+</gdml>
